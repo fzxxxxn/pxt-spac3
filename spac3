@@ -1,21 +1,27 @@
-//% color="#D063CF"
-namespace rgb {
-    //% block="show color $color"
-    //% color.shadow="colorNumberPicker"
-    export function showColor(color: number) {
+/**
+ * Use VARIABLE.min=number and VARIABLE.max=number
+ * to specify a range on a parameter. Drag the foo
+ * block and try to change the value!
+ */
+
+//% color="#FFAB19"
+//% groups="['group', 'move']"
+namespace spac3 {
+    //% block
+    //% group="group"
+    export function group() {
 
     }
-
-    //% block="show wheel $color"
-    //% color.shadow="colorWheelPicker"
-    export function showColorWheel(color: number) {
+    //% block
+    //% group="group"
+    export function ungroup(block:number,POS:Positon){
 
     }
-
-   //% block="show wheel hsv $color"
-   //% color.shadow="colorWheelHsvPicker"
-   export function showColorWheelHsv(color: number) {
-
-}
-
+    
+    //% block
+    //% group="move"
+    export function move(){}
+    //% block
+    //% group="move"
+    export function moveto(x: number, y: number, z: number){}
 }

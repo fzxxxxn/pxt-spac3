@@ -5,23 +5,33 @@
  */
 
 //% color="#FFAB19"
-//% groups="['group', 'move']"
+
 namespace spac3 {
     //% block
-    //% group="group"
+  
     export function group() {
 
     }
     //% block
-    //% group="group"
-    export function ungroup(block:number,POS:Positon){
-
+    
+    
+    export function line(block: number){
+        
     }
     
-    //% block
-    //% group="move"
-    export function move(){}
-    //% block
-    //% group="move"
-    export function moveto(x: number, y: number, z: number){}
+       //% block
+
+    export function move(x: number, y: number, z: number){}
+    //% block="%p0=minecraftCreatePosition| %p1=minecraftCreatePosition| %p2=minecraftCreatePosition||"
+    //% inlineInputMode=external
+    export function moveto(p0: Position,p1: Position,p2: Position){
+        blocks.clone(
+        p0,
+        p1,
+        p2,
+        CloneMask.Replace,
+        CloneMode.Move
+    );
+    }
+ 
 }

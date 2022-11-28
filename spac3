@@ -19,10 +19,19 @@ namespace spac3 {
         
     }
     
-       //% block
-
-    export function move(x: number, y: number, z: number){}
-    //% block="%p0=minecraftCreatePosition| %p1=minecraftCreatePosition| %p2=minecraftCreatePosition||"
+    
+    //% block="from%p3=minecraftCreatePosition|to %p4=minecraftCreatePosition|move x:%x|y:%y|z:%z"
+    //% inlineInputMode=external
+    export function move1(p3: Position,p4: Position,p5: Posiotn,x:Number,y:Number,z:Number){
+        p5=p3+POS(x,y,z)
+        blocks.clone(
+        p3,
+        p4,
+        p5,
+        CloneMask.Replace,
+        CloneMode.Move
+    );}
+    //% block="from%p0=minecraftCreatePosition|to %p1=minecraftCreatePosition|moveto %p2=minecraftCreatePosition||"
     //% inlineInputMode=external
     export function moveto(p0: Position,p1: Position,p2: Position){
         blocks.clone(
@@ -33,5 +42,4 @@ namespace spac3 {
         CloneMode.Move
     );
     }
- 
-}
+ }

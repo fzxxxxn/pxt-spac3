@@ -1,0 +1,27 @@
+{
+    "name": "spac3",
+    "description": "Sound and Music",
+    "dependencies": {
+        "core": "*",
+        "builder": "*"
+    },
+    "files": [
+     
+        "spac3.ts",
+        "README.md"
+    ],
+ 
+    "targetVersions": {
+        "target": "1.6.27",
+        "targetId": "minecraft"
+    },
+    "supportedTargets": [
+        "minecraft"
+    ],
+    "preferredEditor": "tsprj",
+    "icon": "icon.png"
+}
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms

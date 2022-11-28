@@ -6,7 +6,6 @@
         "builder": "*"
     },
     "files": [
-     
         "spac3.ts",
         "README.md"
     ],

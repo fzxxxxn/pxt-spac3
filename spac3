@@ -23,7 +23,7 @@ namespace spac3 {
     //% block="from%p3=minecraftCreatePosition|to %p4=minecraftCreatePosition|move x:%x|y:%y|z:%z"
     //% inlineInputMode=external
     export function move1(p3: Position,p4: Position,x:number,y:number,z:number){
-        p5=p3+POS(x,y,z)
+        const p5 = positions.add(pos(x, y, z), p3)
         blocks.clone(
         p3,
         p4,

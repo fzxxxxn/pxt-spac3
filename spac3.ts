@@ -5,7 +5,11 @@
  */
 
 //% color="#FFAB19"
-
+enum Choice {
+    Z,
+    X,
+    Y
+    }
 namespace spac3 {
     //% block
 
@@ -51,5 +55,70 @@ namespace spac3 {
             CloneMask.Replace,
             CloneMode.Move);
     }
-    export function calcuNewpos(p0: Position, p1: Position ){}
+    export function cloneAll(p0: Position, p1: Position, p2: Position){
+         blocks.clone(
+            p0,
+            p1,
+            p2,
+            CloneMask.Replace,
+            CloneMode.Normal);
+    }
+    export function calcuNewpos(p0: Position, p1: Position ,x:Axis,y:number):Position{
+        let  a = pos(0,0,0)
+        if(x== 0){
+            a= pos(p0.getValue(0), 
+            (p0.getValue(1) - p1.getValue(1))*Math.cos(3.1415926*y/180) - (p0.getValue(2) - p1.getValue(2))*Math.sin(3.1415926*y/180) + p1.getValue(1),      
+            (p0.getValue(1) - p1.getValue(1))*Math.sin(3.1415926*y/180) + (p0.getValue(2) - p1.getValue(2))*Math.cos(3.1415926*y/180) + p1.getValue(2))
+            player.say(a)
+            player.say(p0.getValue(0))
+        }
+        else if(x==1){
+            a= pos(( p0.getValue(0) - p1.getValue(0))*Math.cos(3.1415926*y/180) - (p0.getValue(2) - p1.getValue(2))*Math.sin(3.1415926*y/180) + p1.getValue(0),
+            p0.getValue(1),
+            (p0.getValue(0) - p1.getValue(0))*Math.sin(3.1415926*y/180) + (p0.getValue(2) - p1.getValue(2))*Math.cos(3.1415926*y/180) + p1.getValue(2))
+            player.say(a)
+            player.say(p0.getValue(1))
+        }
+        else if(x==2){
+            a= pos(( p0.getValue(0) - p1.getValue(0))*Math.cos(3.1415926*y/180) - (p0.getValue(1) - p1.getValue(1))*Math.sin(3.1415926*y/180) + p1.getValue(0),
+            (p0.getValue(0) - p1.getValue(0))*Math.sin(3.1415926*y/180) + (p0.getValue(1) - p1.getValue(1))*Math.cos(3.1415926*y/180) + p1.getValue(1),
+            p0.getValue(2))
+            player.say(a)
+            player.say(p0.getValue(2))
+        }
+        return(a)
+
+
+    }
+    //% block="block %p0=minecraftCreateWorldPosition on %p1=minecraftCreateWorldPosition|along %x|by %y|degrees"
+    //% inlineInputMode=external
+    export function rotate( p0: Position, p1: Position ,x:Axis,y:number){
+        moveAll(p0,p0,calcuNewpos(p0,p1,x,y))
+    }
+    export function calcuRefpos(p0: Position,y:number,x:Choice):Position{
+        let  a = pos(0,0,0)
+        if(x== 0){
+            a= pos(p0.getValue(0),p0.getValue(1),y*2-p0.getValue(2))
+            player.say(a)
+            player.say(p0.getValue(0))
+        }
+        else if(x==1){
+            a= pos(y*2-p0.getValue(0),p0.getValue(1),p0.getValue(2))
+            player.say(a)
+            player.say(p0.getValue(0))
+        }
+        else if(x==2){
+            a= pos(p0.getValue(0),y*2-p0.getValue(1),p0.getValue(2))
+            player.say(a)
+            player.say(p0.getValue(0))
+        }
+        return(a)
+
+
+    }
+    //% block="block reflect %p0=minecraftCreateWorldPosition on %x| = %y|pad"
+    //% inlineInputMode=external
+    export function reflectB( p0: Position,x:Choice, y:number){
+        cloneAll(p0,p0,calcuRefpos(p0,y,x))
+    }
 }

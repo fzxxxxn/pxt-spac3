@@ -10,19 +10,36 @@ enum Choice {
     X,
     Y
     }
+let groupA = [pos(0, 0, 0),pos(0, 0, 0)]
+enum Choice1 {
+   groupA
+    }
 namespace spac3 {
-    //% block
-
-    export function group() {
-
+    
+    //% block="from%p3=minecraftCreatePosition|to %p4=minecraftCreatePosition|set as %groupA|using %y"
+    //% inlineInputMode=external
+    export function group<T>(p3: Position, p4: Position,  droupA: any, y: Block) {
+    
+    const numb = Math.abs(p3.getValue(0)-p4.getValue(0))+Math.abs(p3.getValue(1)-p4.getValue(1))+Math.abs(p3.getValue(2)-p4.getValue(2))
+    for (let i = 0; i < Math.abs(p3.getValue(0)-p4.getValue(0)); i++) {
+        groupA[groupA.length+i]= pos(p3.getValue(0)+i,p3.getValue(1),p3.getValue(2));
+   }
+    for (let i = 0; i < Math.abs(p3.getValue(1)-p4.getValue(1)); i++) {
+        groupA[groupA.length+i]=pos(p3.getValue(0),p3.getValue(1)+i,p3.getValue(2));
+   }
+    for (let i = 0; i < Math.abs(p3.getValue(2)-p4.getValue(2)); i++) {
+        groupA[groupA.length+i]=pos(p3.getValue(0),p3.getValue(1)+i,p3.getValue(2)+i);
+   }
+    
     }
     //% block
 
 
     export function line(block: number) {
-
+    
     }
-
+    
+   
 
     //% block="from%p3=minecraftCreatePosition|to %p4=minecraftCreatePosition|move x:%x|y:%y|z:%z"
     //% inlineInputMode=external

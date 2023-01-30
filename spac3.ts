@@ -10,34 +10,80 @@ enum Choice {
     X,
     Y
     }
-let groupA = [pos(0, 0, 0),pos(0, 0, 0)]
+const groupA = [pos(0, 0, 0),pos(0, 0, 0)]
+
 enum Choice1 {
    groupA
     }
 namespace spac3 {
     
-    //% block="from%p3=minecraftCreatePosition|to %p4=minecraftCreatePosition|set as %groupA|using %y"
+    //% block="from%p3=minecraftCreatePosition|to %p4=minecraftCreatePosition|set as %groupA = text|using %y"
     //% inlineInputMode=external
-    export function group<T>(p3: Position, p4: Position,  droupA: any, y: Block) {
-    
+    export function newgroup<T>(p3: Position, p4: Position, y: Block) :any[]{
+    let groupA = [world(0, 0, 0), world(0, 0, 0)]
     const numb = Math.abs(p3.getValue(0)-p4.getValue(0))+Math.abs(p3.getValue(1)-p4.getValue(1))+Math.abs(p3.getValue(2)-p4.getValue(2))
-    for (let i = 0; i < Math.abs(p3.getValue(0)-p4.getValue(0)); i++) {
-        groupA[groupA.length+i]= pos(p3.getValue(0)+i,p3.getValue(1),p3.getValue(2));
+    for (let i = 0; i < Math.abs(p3.getValue(0)-p4.getValue(0))+1; i++) {
+        player.say(":)");
+        if(i==0)
+        {
+        player.say(":)")
+        groupA[i]= world(p3.getValue(0)+i,p3.getValue(1),p3.getValue(2));
+        blocks.place(y, groupA[i]);
+        }
+        else{
+            player.say(":)");
+            groupA[i]=world(p3.getValue(0)+i,p3.getValue(1),p3.getValue(2));
+            blocks.place(y, groupA[i])
+            
+        }
    }
-    for (let i = 0; i < Math.abs(p3.getValue(1)-p4.getValue(1)); i++) {
-        groupA[groupA.length+i]=pos(p3.getValue(0),p3.getValue(1)+i,p3.getValue(2));
+    for (let i = 0; i < Math.abs(p3.getValue(1)-p4.getValue(1))+1; i++) {
+        if(i==0){
+        groupA[i]=world(p3.getValue(0),p3.getValue(1)+i,p3.getValue(2));
+        blocks.place(y, groupA[i]);
+        }
+        else{
+        groupA[i]=world(p3.getValue(0),p3.getValue(1)+i,p3.getValue(2));
+        blocks.place(y, groupA[i]);
+            }
    }
-    for (let i = 0; i < Math.abs(p3.getValue(2)-p4.getValue(2)); i++) {
-        groupA[groupA.length+i]=pos(p3.getValue(0),p3.getValue(1)+i,p3.getValue(2)+i);
+    for (let i = 0; i < Math.abs(p3.getValue(2)-p4.getValue(2))+1; i++) {
+        if(i==0){
+        groupA[i]=world(p3.getValue(0),p3.getValue(1)+i,p3.getValue(2)+i);
+        blocks.place(y, groupA[i]);
+        }
+        else{
+            groupA[i]=world(p3.getValue(0),p3.getValue(1)+i,p3.getValue(2)+i)
+            blocks.place(y, groupA[i]);
+             
+        }
    }
+    return groupA;
+    }
+    //% block="Group %groupA|using %x|"
+    //% inlineInputMode=external
+    export function groupPosit(aa: any,  x: Block) {
+    let groupA = aa
+   
+    for (let i = 0; i < 7; i++) {
+        blocks.place(GRASS, groupA[i]);
+   }
+ 
     
     }
-    //% block
-
-
-    export function line(block: number) {
+    //% block="Group %groupA|move x:%x|y:%y|z:%z"
+    //% inlineInputMode=external
+    export function groupmove(groupA: any,  x: number, y: number, z: number) {
+    
+   
+    for (let i = 0; i < groupA.length; i++) {
+        spac3.move1(groupA[i],groupA[i],x,y,z);
+        groupA[i]= positions.add(pos(x, y, z), groupA[i]);
+   }
+ 
     
     }
+
     
    
 

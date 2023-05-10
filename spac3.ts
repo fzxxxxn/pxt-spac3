@@ -60,30 +60,8 @@ namespace spac3 {
    }
     return groupA;
     }
-    //% block="Group %groupA|using %x|"
-    //% inlineInputMode=external
-    export function groupPosit(aa: any,  x: Block) {
-    let groupA = aa
-   
-    for (let i = 0; i < 7; i++) {
-        blocks.place(GRASS, groupA[i]);
-   }
- 
     
-    }
-    //% block="Group %groupA|move x:%x|y:%y|z:%z"
-    //% inlineInputMode=external
-    export function groupmove(groupA: any,  x: number, y: number, z: number) {
     
-   
-    for (let i = 0; i < groupA.length; i++) {
-        spac3.move1(groupA[i],groupA[i],x,y,z);
-        groupA[i]= positions.add(pos(x, y, z), groupA[i]);
-   }
- 
-    
-    }
-
     
    
 
